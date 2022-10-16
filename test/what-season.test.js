@@ -1,8 +1,21 @@
-const { expect, assert } = require('chai');
-const { testOptional, checkForThrowingErrors, checkForNotThrowingErrors, CONSTANTS } = require('../extensions/index.js');
-const { getSeason } = require('../src/what-season.js');
+const {
+    expect,
+    assert
+} = require('chai');
+const {
+    testOptional,
+    checkForThrowingErrors,
+    checkForNotThrowingErrors,
+    CONSTANTS
+} = require('../extensions/index.js');
+const {
+    getSeason
+} = require('../src/what-season.js');
 
-const { CORRECT_RESULT_MSG, INCORRECT_RESULT_MSG } = CONSTANTS;
+const {
+    CORRECT_RESULT_MSG,
+    INCORRECT_RESULT_MSG
+} = CONSTANTS;
 
 it.optional = testOptional;
 
@@ -29,11 +42,11 @@ describe('What season', () => {
                 summer,
                 autumn,
             ] = [
-                    new Date(2019, 11, 22, 23, 45, 11, 500),
-                    new Date(2018, 4, 17, 11, 27, 4, 321),
-                    new Date(2017, 6, 11, 23, 45, 11, 500),
-                    new Date(1994, 8, 26, 3, 0, 11, 500),
-                ];
+                new Date(2019, 11, 22, 23, 45, 11, 500),
+                new Date(2018, 4, 17, 11, 27, 4, 321),
+                new Date(2017, 6, 11, 23, 45, 11, 500),
+                new Date(1994, 8, 26, 3, 0, 11, 500),
+            ];
             assert.equal(getSeason(winter), 'winter');
             assert.equal(getSeason(spring), 'spring');
             assert.equal(getSeason(summer), 'summer');
@@ -47,11 +60,11 @@ describe('What season', () => {
                 summer,
                 autumn,
             ] = [
-                    new Date(1900, 0, 22, 23, 45, 11, 500),
-                    new Date(1354, 4, 17, 11, 27, 4, 321),
-                    new Date(1, 6, 13, 23, 45, 11, 500),
-                    new Date(22, 8, 22, 3, 0, 11, 500),
-                ];
+                new Date(1900, 0, 22, 23, 45, 11, 500),
+                new Date(1354, 4, 17, 11, 27, 4, 321),
+                new Date(1, 6, 13, 23, 45, 11, 500),
+                new Date(22, 8, 22, 3, 0, 11, 500),
+            ];
             assert.equal(getSeason(winter), 'winter');
             assert.equal(getSeason(spring), 'spring');
             assert.equal(getSeason(summer), 'summer');
@@ -65,11 +78,11 @@ describe('What season', () => {
                 summer,
                 autumn,
             ] = [
-                    new Date(2025, 1, 22, 23, 45, 11, 500),
-                    new Date(2134, 2, 17, 11, 27, 4, 321),
-                    new Date(2012, 5, 13, 23, 45, 11, 500),
-                    new Date(2019, 8, 22, 3, 0, 11, 500),
-                ];
+                new Date(2025, 1, 22, 23, 45, 11, 500),
+                new Date(2134, 2, 17, 11, 27, 4, 321),
+                new Date(2012, 5, 13, 23, 45, 11, 500),
+                new Date(2019, 8, 22, 3, 0, 11, 500),
+            ];
             assert.equal(getSeason(winter), 'winter');
             assert.equal(getSeason(spring), 'spring');
             assert.equal(getSeason(summer), 'summer');
@@ -191,7 +204,9 @@ describe('What season', () => {
         it.optional('throws an error with message "Invalid date!" on invalid argument', function () {
             const res = checkForThrowingErrors.call(this, [
                 () => getSeason('foo'),
-                () => getSeason({ John: 'Smith' }),
+                () => getSeason({
+                    John: 'Smith'
+                }),
                 () => getSeason(20192701),
                 () => getSeason([2019, '27', 0 + '1']),
                 () => getSeason(() => new Date())
